@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,10 +10,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return ScreenUtilInit(
+      designSize: const Size(402, 874),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'First Method',
+          // You can use the library anywhere in the app even in theme
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          ),
+          home: child,
+        );
+      },
+      child: const MyHomePage(title: 'First Method'),
     );
   }
 }
@@ -27,16 +41,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  bool isGridView = true;
   @override
   Widget build(BuildContext context) {
+    print('build called');
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         items: [
@@ -65,142 +74,191 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: false,
         title: Text("Talha"),
       ),
-      body: ListView(
-        children: [
-          Text('1'),
-          SizedBox(height: 10),
-          Text('2'),
-          Row(children: [Text('3'), Text('4')]),
-          ElevatedButton(
-            onPressed: () {
-              print('Button pressed');
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text('1'),
+            10.verticalSpace,
+            Text('2'),
+            Row(children: [Text('3'), Text('4')]),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  isGridView = !isGridView;
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Change developer'),
             ),
-            child: Text('Button'),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.add, color: Colors.blue),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(width: 10),
-              InkWell(
-                onTap: () {
-                  print('Imran tapped');
-                },
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  margin: EdgeInsets.only(right: 10),
-                  padding: EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black, width: 2),
-                    image: DecorationImage(
-                      image: AssetImage('asset/images/profile.png'),
-                      fit: BoxFit.cover,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 8,
-                        blurRadius: 20,
-                        offset: Offset(2, 6),
+            isGridView
+                ? Container(color: Colors.red, width: 100.w, height: 100.h)
+                : Container(color: Colors.blue, width: 100.w, height: 100.h),
+            if (isGridView) Container(color: Colors.green, width: 100.w, height: 100.h),
+
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.add, color: Colors.blue),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(width: 10),
+                InkWell(
+                  onTap: () {
+                    print('Imran tapped');
+                  },
+                  child: Container(
+                    width: 150.w,
+                    height: 150.h,
+                    margin: EdgeInsets.only(right: 10),
+                    padding: EdgeInsets.all(20),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.black, width: 2),
+                      image: DecorationImage(
+                        image: AssetImage('asset/images/profile.png'),
+                        fit: BoxFit.cover,
                       ),
-                    ],
-                  ),
-                  child: Text(
-                    'Container',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 8,
+                          blurRadius: 20,
+                          offset: Offset(2, 6),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      'Container',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    color: Colors.red,
-                    width: 150,
-                    height: 150,
-                    padding: EdgeInsets.all(20),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      color: Colors.red,
+                      width: 150,
+                      height: 150,
+                      padding: EdgeInsets.all(20),
 
-                    alignment: Alignment.center,
-                  ),
-                  Row(
+                      alignment: Alignment.center,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          color: Colors.blue,
+                          width: 30,
+                          height: 30,
+                          padding: EdgeInsets.all(20),
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          color: Colors.blue,
+                          width: 30,
+                          height: 30,
+                          padding: EdgeInsets.all(20),
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.search),
+                  ],
+                ),
+              ],
+            ),
+            TextButton(
+              onPressed: () {
+                print('Text Button pressed');
+              },
+              child: Text('Text Button'),
+            ),
+
+            TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Enter your name',
+              ),
+            ),
+            SizedBox(
+              height: ScreenUtil().screenHeight * 0.2,
+              width: ScreenUtil().screenWidth * 0.5,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [Text('1'), Text('2'), Text('3'), Text('4'), Text('5'), Text('6')],
+              ),
+            ),
+            Container(
+              color: Colors.red,
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: ListView.builder(
+                // physics: NeverScrollableScrollPhysics(),
+                itemCount: mockList.length,
+                itemBuilder: (context, index) {
+                  return Column(
                     children: [
-                      Container(
-                        color: Colors.blue,
-                        width: 30,
-                        height: 30,
-                        padding: EdgeInsets.all(20),
-                      ),
-                      SizedBox(width: 10),
-                      Container(
-                        color: Colors.blue,
-                        width: 30,
-                        height: 30,
-                        padding: EdgeInsets.all(20),
-                      ),
+                      CharityNameWidget(charityName: mockList[index].charityName),
+                      Text(mockList[index].charityDescription),
+                      Divider(),
                     ],
-                  ),
-                  Icon(Icons.search),
-                ],
+                  );
+                },
               ),
-            ],
-          ),
-          TextButton(
-            onPressed: () {
-              print('Text Button pressed');
-            },
-            child: Text('Text Button'),
-          ),
-
-          TextFormField(
-            decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter your name'),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.2,
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [Text('1'), Text('2'), Text('3'), Text('4'), Text('5'), Text('6')],
             ),
-          ),
-          Container(
-            color: Colors.red,
-            height: MediaQuery.of(context).size.height * 0.2,
-            child: ListView.builder(
-              // physics: NeverScrollableScrollPhysics(),
-              itemCount: mockList.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    CharityNameWidget(charityName: mockList[index].charityName),
-                    Text(mockList[index].charityDescription),
-                    Divider(),
-                  ],
-                );
-              },
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.2,
+              child: ListView.separated(
+                physics: NeverScrollableScrollPhysics(),
+                separatorBuilder: (context, index) {
+                  return index != 2 ? Divider() : SizedBox.shrink();
+                },
+                itemCount: mockList.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      CharityNameWidget(charityName: mockList[index].charityName),
+                      Text(mockList[index].charityDescription),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.2,
-            child: ListView.separated(
+            GridView(
+              shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              separatorBuilder: (context, index) {
-                return index != 2 ? Divider() : SizedBox.shrink();
-              },
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 1 / 1.5,
+              ),
+              children: [
+                Container(color: Colors.red),
+                Container(color: Colors.blue),
+                Container(color: Colors.green),
+                Container(color: Colors.yellow),
+                Container(color: Colors.purple),
+                Container(color: Colors.orange, width: 100, height: 100),
+              ],
+            ),
+            GridView.builder(
+              shrinkWrap: true,
+              // physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 1 / 1.5,
+              ),
               itemCount: mockList.length,
               itemBuilder: (context, index) {
                 return Column(
@@ -211,57 +269,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
-          ),
-          GridView(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 1 / 1.5,
+            Image.asset(
+              'asset/images/profile.png',
+              width: 100,
+              height: 400,
+              // fit: BoxFit.fitWidth,
+              errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
             ),
-            children: [
-              Container(color: Colors.red),
-              Container(color: Colors.blue),
-              Container(color: Colors.green),
-              Container(color: Colors.yellow),
-              Container(color: Colors.purple),
-              Container(color: Colors.orange, width: 100, height: 100),
-            ],
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            // physics: NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 1 / 1.5,
+            Column(spacing: 10.h, children: [Text('1'), Text('2'), Text('3')]),
+            Container(
+              width: 50.w,
+              height: 50.h,
+              padding: EdgeInsets.all(14.75.r),
+              decoration: BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+              child: FlutterLogo(),
             ),
-            itemCount: mockList.length,
-            itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  CharityNameWidget(charityName: mockList[index].charityName),
-                  Text(mockList[index].charityDescription),
-                ],
-              );
-            },
-          ),
-          Image.asset(
-            'asset/images/profile.png',
-            width: 100,
-            height: 400,
-            // fit: BoxFit.fitWidth,
-            errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          ],
+        ),
       ),
     );
   }
