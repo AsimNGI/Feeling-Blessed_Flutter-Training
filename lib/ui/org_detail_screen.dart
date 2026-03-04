@@ -93,7 +93,7 @@ class OrgDetailScreen extends StatelessWidget {
                       const SizedBox(height: 8),
                       IconPlusTextWidget(
                         icon: SvgPicture.asset(
-                          "assets/images/website.svg",
+                          "asset/images/website.svg",
                           colorFilter: const ColorFilter.mode(
                             Color(0XFF98A2B3),
                             BlendMode.srcIn,
@@ -118,7 +118,7 @@ class OrgDetailScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(24),
               onTap: () {},
               child: Image.asset(
-                "assets/images/zakat_tag.png",
+                "asset/images/zakat_tag.png",
                 width: 138,
                 height: 32,
                 fit: BoxFit.fill,
