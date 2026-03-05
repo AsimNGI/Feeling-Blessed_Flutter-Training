@@ -3,6 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_training/model/album_items.dart';
+import 'package:flutter_training/theme/app_text_styles.dart';
+import 'package:flutter_training/utils/app_colors.dart';
+import 'package:flutter_training/utils/app_padding.dart';
 
 class AlbumItemGridWidget extends StatelessWidget {
   final AlbumItems album;
@@ -13,11 +16,10 @@ class AlbumItemGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(10.r),
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // Inside AlbumItemWidget build method:
           Image.network(
             album.coverImage,
             fit: BoxFit.cover,
@@ -32,53 +34,47 @@ class AlbumItemGridWidget extends StatelessWidget {
                 ),
               );
             },
-            errorBuilder: (context, error, stackTrace) =>
-                const Icon(Icons.error),
+            errorBuilder: (_, __, ___) => const Icon(Icons.error),
           ),
           Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
+            bottom: AppPadding.h0,
+            left: AppPadding.w0,
+            right: AppPadding.w0,
             child: ClipRect(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+                filter: ImageFilter.blur(
+                  sigmaX: AppPadding.w2,
+                  sigmaY: AppPadding.w2,
+                ),
                 child: Container(
-                  height: 50.h,
+                  height: AppPadding.h50,
                   decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.2),
+                    color: AppColors.textPrimary.withValues(alpha: 0.2),
                   ),
                 ),
               ),
             ),
           ),
           Positioned(
-            bottom: 25,
-            left: 0,
-            right: 0,
+            bottom: AppPadding.h25,
+            left: AppPadding.w0,
+            right: AppPadding.w0,
             child: Text(
               album.name,
               maxLines: 2,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppTextStyles.overlayTitle,
             ),
           ),
           Positioned(
-            bottom: 8,
-            left: 8,
-            right: 8,
+            bottom: AppPadding.w8,
+            left: AppPadding.w8,
+            right: AppPadding.w8,
             child: Text(
               album.id,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12.sp,
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppTextStyles.overlayCaption,
             ),
           ),
         ],

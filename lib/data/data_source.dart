@@ -1,20 +1,26 @@
-import '../model/album_items.dart';
+import 'package:flutter_training/model/album_items.dart';
+import 'package:flutter_training/utils/app_constant.dart';
+import 'package:flutter_training/utils/app_strings.dart';
 
-final List<AlbumItems> albums = [
-  AlbumItems("https://picsum.photos/id/10/200", "Mountain View", "1"),
-  AlbumItems("https://picsum.photos/id/11/200", "Lush Forest", "2"),
-  AlbumItems("https://picsum.photos/id/12/200", "Ocean Waves", "3"),
-  AlbumItems("https://picsum.photos/id/13/200", "Desert Dunes", "4"),
-  AlbumItems("https://picsum.photos/id/14/200", "City Lights", "5"),
-  AlbumItems("https://picsum.photos/id/15/200", "Autumn Leaves", "6"),
-  AlbumItems("https://picsum.photos/id/16/200", "Snowy Peaks", "7"),
-  AlbumItems("https://picsum.photos/id/17/200", "Grassy Fields", "8"),
-  AlbumItems("https://picsum.photos/id/18/200", "Deep Blue", "9"),
-  AlbumItems("https://picsum.photos/id/19/200", "Starry Night", "10"),
-  AlbumItems("https://picsum.photos/id/20/200", "Golden Sunset", "11"),
-  AlbumItems("https://picsum.photos/id/21/200", "Misty River", "12"),
-  AlbumItems("https://picsum.photos/id/22/200", "Quiet Lake", "13"),
-  AlbumItems("https://picsum.photos/id/23/200", "Canyon Rocks", "14"),
-  AlbumItems("https://picsum.photos/id/24/200", "Green Valley", "15"),
-  AlbumItems("https://picsum.photos/id/25/200", "Palm Beach", "16"),
-];
+class AlbumDataSource {
+  static const String _base = AppConstant.placeholderImageBase;
+
+  static List<AlbumItems> get albums => [
+    AlbumItems('$_base/id/10/200', AppStrings.mountainView, '1'),
+    AlbumItems('$_base/id/11/200', AppStrings.lushForest, '2'),
+    AlbumItems('$_base/id/12/200', AppStrings.oceanWaves, '3'),
+    AlbumItems('$_base/id/13/200', AppStrings.desertDunes, '4'),
+    AlbumItems('$_base/id/14/200', AppStrings.cityLights, '5'),
+    AlbumItems('$_base/id/15/200', AppStrings.autumnLeaves, '6'),
+    AlbumItems('$_base/id/16/200', AppStrings.snowyPeaks, '7'),
+    AlbumItems('$_base/id/17/200', AppStrings.grassyFields, '8'),
+    AlbumItems('$_base/id/18/200', AppStrings.deepBlue, '9'),
+    AlbumItems('$_base/id/19/200', AppStrings.starryNight, '10'),
+    AlbumItems('$_base/id/20/200', AppStrings.goldenSunset, '11'),
+    AlbumItems('$_base/id/21/200', AppStrings.mistyRiver, '12'),
+    AlbumItems('$_base/id/22/200', AppStrings.quietLake, '13'),
+    AlbumItems('$_base/id/23/200', AppStrings.canyonRocks, '14'),
+    AlbumItems('$_base/id/24/200', AppStrings.greenValley, '15'),
+    AlbumItems('$_base/id/25/200', AppStrings.palmBeach, '16'),
+  ];
+}

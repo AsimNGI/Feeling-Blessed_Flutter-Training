@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_training/theme/app_text_styles.dart';
+import 'package:flutter_training/utils/app_colors.dart';
 
 class IconPlusTextWidget extends StatelessWidget {
-  /// Can be [IconData] or a [Widget] (like SvgPicture)
   final dynamic icon;
   final String text;
   final double iconSize;
@@ -15,9 +17,9 @@ class IconPlusTextWidget extends StatelessWidget {
     required this.icon,
     required this.text,
     this.iconSize = 16,
-    this.iconColor = Colors.black,
+    this.iconColor = AppColors.textPrimary,
     this.spacing = 4,
-    this.textStyle = const TextStyle(fontSize: 12, color: Color(0xFF475467)),
+    this.textStyle,
     this.onTap,
   }) : assert(
          icon is IconData || icon is Widget,
@@ -28,7 +30,7 @@ class IconPlusTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget iconWidget;
     if (icon is IconData) {
-      iconWidget = Icon(icon as IconData, size: iconSize, color: iconColor);
+      iconWidget = Icon(icon as IconData, size: iconSize.r, color: iconColor);
     } else if (icon is Widget) {
       iconWidget = icon as Widget;
     } else {
@@ -39,11 +41,11 @@ class IconPlusTextWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         iconWidget,
-        SizedBox(width: spacing),
+        SizedBox(width: spacing.w),
         GestureDetector(
           onTap: onTap,
           behavior: HitTestBehavior.opaque,
-          child: Text(text, style: textStyle),
+          child: Text(text, style: textStyle ?? AppTextStyles.bodySmall),
         ),
       ],
     );

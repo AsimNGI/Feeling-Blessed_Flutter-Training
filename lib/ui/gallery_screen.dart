@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_training/data/data_source.dart';
+import 'package:flutter_training/theme/app_text_styles.dart';
+import 'package:flutter_training/utils/app_padding.dart';
+import 'package:flutter_training/utils/app_strings.dart';
 
-import '../component/album_item_grid_widget.dart';
-import '../component/album_item_list_widget.dart';
+import '../widgets/album_item_grid_widget.dart';
+import '../widgets/album_item_list_widget.dart';
 
 class MyGallery extends StatefulWidget {
   const MyGallery({super.key});
@@ -19,21 +22,14 @@ class _MyGalleryState extends State<MyGallery> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight + 10.0),
+        preferredSize: Size.fromHeight(kToolbarHeight + 10.h),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+          padding: AppPadding.appBarPadding,
           child: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
             scrolledUnderElevation: 0,
-            title: const Text(
-              "Albums",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-            ),
+            title: Text(AppStrings.albums, style: AppTextStyles.headlineLarge),
             actions: [
               IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
               IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
@@ -46,58 +42,49 @@ class _MyGalleryState extends State<MyGallery> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: AppPadding.all16,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    isGridView ? "Grid Style" : "List Style",
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    isGridView ? AppStrings.gridStyle : AppStrings.listStyle,
+                    style: AppTextStyles.titleMedium,
                   ),
                   Switch(
                     value: isGridView,
-                    onChanged: (value) {
-                      setState(() {
-                        isGridView = !isGridView;
-                      });
-                    },
+                    onChanged: (value) => setState(() => isGridView = value),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 12.h),
+            AppPadding.vertical16,
             isGridView
                 ? GridView.builder(
-                    padding: const EdgeInsets.all(16),
+                    padding: AppPadding.all16,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
-                          childAspectRatio: 1 / 1.2,
-                        ),
-                    itemCount: albums.length,
-                    itemBuilder: (context, index) {
-                      // Removed Column and Container that were causing layout issues
-                      return AlbumItemGridWidget(album: albums[index]);
-                    },
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 10.h,
+                      crossAxisSpacing: 10.w,
+                      childAspectRatio: 1 / 1.2,
+                    ),
+                    itemCount: AlbumDataSource.albums.length,
+                    itemBuilder: (context, index) => AlbumItemGridWidget(
+                      album: AlbumDataSource.albums[index],
+                    ),
                   )
                 : ListView.builder(
-                    padding: const EdgeInsets.all(16),
+                    padding: AppPadding.all16,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: albums.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: AlbumItemListWidget(album: albums[index]),
-                      );
-                    },
+                    itemCount: AlbumDataSource.albums.length,
+                    itemBuilder: (context, index) => Padding(
+                      padding: AppPadding.only(bottom: 12),
+                      child: AlbumItemListWidget(
+                        album: AlbumDataSource.albums[index],
+                      ),
+                    ),
                   ),
             SizedBox(height: 80.h),
           ],

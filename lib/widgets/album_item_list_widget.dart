@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_training/model/album_items.dart';
+import 'package:flutter_training/theme/app_text_styles.dart';
+import 'package:flutter_training/utils/app_colors.dart';
+import 'package:flutter_training/utils/app_padding.dart';
 
 class AlbumItemListWidget extends StatelessWidget {
   final AlbumItems album;
@@ -10,51 +12,44 @@ class AlbumItemListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120.h,
+      height: AppPadding.h120,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(AppPadding.r12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+            color: AppColors.shadow,
+            blurRadius: AppPadding.r10,
+            offset: Offset(AppPadding.w0, AppPadding.h4),
           ),
         ],
       ),
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            borderRadius: BorderRadius.all(Radius.circular(AppPadding.r12)),
             child: Image.network(
               album.coverImage,
-              width: 120.h,
-              height: 120.h,
+              width: AppPadding.w120,
+              height: AppPadding.h120,
               fit: BoxFit.cover,
             ),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: AppPadding.all12,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     album.name,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                    style: AppTextStyles.titleLarge,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    album.id,
-                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                  ),
+                  AppPadding.vertical4,
+                  Text(album.id, style: AppTextStyles.bodyMedium),
                 ],
               ),
             ),
