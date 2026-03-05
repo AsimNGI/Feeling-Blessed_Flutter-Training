@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_training/theme/app_theme.dart';
-import 'package:flutter_training/ui/my_home.dart';
 import 'package:flutter_training/utils/app_constant.dart';
+import 'package:flutter_training/utils/app_router.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -18,13 +19,15 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Feeling Blessed',
           theme: AppTheme.theme,
-          home: const MyHomePage(),
+          routerConfig: AppRouter.appRouter,
+
         );
       },
     );
   }
 }
+

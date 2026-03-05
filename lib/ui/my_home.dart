@@ -11,7 +11,8 @@ import 'package:flutter_training/utils/app_padding.dart';
 import 'package:flutter_training/utils/app_strings.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final String id;
+  const MyHomePage({super.key, required this.id});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -39,16 +40,21 @@ class _MyHomePageState extends State<MyHomePage> {
     BubbleItem(icon: Icons.volunteer_activism_outlined, label: ''),
     BubbleItem(icon: Icons.person_outline, label: ''),
   ];
+  @override
+  initState() {
+    super.initState();
+    print('id: ${widget.id}');
+  }
 
   @override
   Widget build(BuildContext context) {
+    print('id: ${widget.id}');
     return SafeArea(
       child: Scaffold(
         body: AnimatedBubbleNavBar(
           screens: _screens,
           menuItems: _menuItems,
           initialIndex: 0,
-
           bubbleDecoration: BubbleDecoration(
             backgroundColor: AppColors.navBarBackground,
             selectedBubbleBackgroundColor: AppColors.navBarSelectedBubble,
@@ -94,8 +100,7 @@ class KeepAliveWrapper extends StatefulWidget {
   State<KeepAliveWrapper> createState() => _KeepAliveWrapperState();
 }
 
-class _KeepAliveWrapperState extends State<KeepAliveWrapper>
-    with AutomaticKeepAliveClientMixin {
+class _KeepAliveWrapperState extends State<KeepAliveWrapper> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);

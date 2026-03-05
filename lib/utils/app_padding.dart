@@ -444,4 +444,5 @@ class AppPadding {
   static SizedBox get horizontal16 => w16.horizontalSpace;
   static SizedBox get horizontal24 => w24.horizontalSpace;
   static SizedBox get horizontal32 => w32.horizontalSpace;
+
 }
