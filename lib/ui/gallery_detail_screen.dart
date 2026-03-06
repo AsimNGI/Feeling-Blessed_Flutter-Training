@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_training/model/organization.dart';
+import 'package:flutter_training/model/album_items.dart';
 import 'package:flutter_training/theme/app_text_styles.dart';
 import 'package:flutter_training/utils/app_colors.dart';
 import 'package:flutter_training/utils/app_images_url.dart';
 import 'package:flutter_training/utils/app_padding.dart';
-import 'package:flutter_training/utils/app_strings.dart';
+import 'package:flutter_training/widgets/icon_plus_text_widget.dart';
 
-import '../widgets/icon_plus_text_widget.dart';
+class GalleryDetailScreen extends StatefulWidget {
+  final AlbumItems albumItems;
 
-class OrgDetailScreen extends StatelessWidget {
-  // 3. Pass data via constructor
-  final Organization org;
+  const GalleryDetailScreen({super.key, required this.albumItems});
 
-  const OrgDetailScreen({super.key, required this.org});
+  @override
+  State<GalleryDetailScreen> createState() => _GalleryDetailScreenState();
+}
 
+class _GalleryDetailScreenState extends State<GalleryDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +35,10 @@ class OrgDetailScreen extends StatelessWidget {
               aspectRatio: 4 / 3,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(AppPadding.r16),
-                child: Image.asset(org.coverImagePath, fit: BoxFit.cover),
+                child: Image.network(
+                  widget.albumItems.coverImage,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             AppPadding.vertical24,
@@ -42,14 +46,39 @@ class OrgDetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 84.w,
-                  height: 84.h,
-                  padding: AppPadding.all8,
+                  width: AppPadding.w84,
+                  height: AppPadding.h84,
                   decoration: BoxDecoration(
                     border: Border.all(width: 1, color: AppColors.border),
                     borderRadius: BorderRadius.circular(AppPadding.r16),
                   ),
-                  child: Image.asset(org.logoPath, fit: BoxFit.contain),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(AppPadding.r16),
+                    child: Image.network(
+                      widget.albumItems.logoImage,
+                      fit: BoxFit.fill,
+                      width: AppPadding.w84,
+                      height: AppPadding.h84,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return SizedBox(
+                          width: AppPadding.w84,
+                          height: AppPadding.h84,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                  : null,
+                              color: AppColors.primary,
+                              strokeWidth: 2,
+                            ),
+                          ),
+                        );
+                      },
+                      errorBuilder: (_, __, ___) => const Icon(Icons.error),
+                    ),
+                  ),
                 ),
                 AppPadding.horizontal12,
                 Expanded(
@@ -57,7 +86,7 @@ class OrgDetailScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        org.name,
+                        widget.albumItems.name,
                         style: AppTextStyles.headlineSmall,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
@@ -65,7 +94,7 @@ class OrgDetailScreen extends StatelessWidget {
                       AppPadding.vertical12,
                       IconPlusTextWidget(
                         icon: Icons.pin_drop_outlined,
-                        text: org.location,
+                        text: widget.albumItems.location,
                       ),
                       AppPadding.vertical4,
                       IconPlusTextWidget(
@@ -75,10 +104,10 @@ class OrgDetailScreen extends StatelessWidget {
                             AppColors.iconMuted,
                             BlendMode.srcIn,
                           ),
-                          width: 16.w,
-                          height: 16.h,
+                          width: AppPadding.w16,
+                          height: AppPadding.h16,
                         ),
-                        text: org.website,
+                        text: widget.albumItems.website,
                         textStyle: AppTextStyles.captionUnderline,
                       ),
                     ],
@@ -92,16 +121,13 @@ class OrgDetailScreen extends StatelessWidget {
               onTap: () {},
               child: Image.asset(
                 AppImagesUrl.imageZakatTag,
-                width: 138.w,
-                height: 32.h,
+                width: AppPadding.w138,
+                height: AppPadding.h32,
                 fit: BoxFit.fill,
               ),
             ),
             AppPadding.vertical24,
-            Text(
-              AppStrings.organizationDetails,
-              style: AppTextStyles.bodyLarge,
-            ),
+            Text(widget.albumItems.description, style: AppTextStyles.bodyLarge),
           ],
         ),
       ),

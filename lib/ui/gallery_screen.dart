@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_training/data/data_source.dart';
+import 'package:flutter_training/model/album_items.dart';
 import 'package:flutter_training/theme/app_text_styles.dart';
 import 'package:flutter_training/utils/app_padding.dart';
+import 'package:flutter_training/utils/app_screens_navigations.dart';
 import 'package:flutter_training/utils/app_strings.dart';
 
 import '../widgets/album_item_grid_widget.dart';
 import '../widgets/album_item_list_widget.dart';
 
 class MyGallery extends StatefulWidget {
-  const MyGallery({super.key});
+  final List<AlbumItems> albums;
+  const MyGallery({super.key, required this.albums});
 
   @override
   State<MyGallery> createState() => _MyGalleryState();
@@ -69,20 +71,28 @@ class _MyGalleryState extends State<MyGallery> {
                       crossAxisSpacing: 10.w,
                       childAspectRatio: 1 / 1.2,
                     ),
-                    itemCount: AlbumDataSource.albums.length,
-                    itemBuilder: (context, index) => AlbumItemGridWidget(
-                      album: AlbumDataSource.albums[index],
+                    itemCount: widget.albums.length,
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: () => AppScreensNavigations.navigateToGalleryDetail(
+                        context,
+                        widget.albums[index],
+                      ),
+                      child: AlbumItemGridWidget(album: widget.albums[index]),
                     ),
                   )
                 : ListView.builder(
                     padding: AppPadding.all16,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: AlbumDataSource.albums.length,
-                    itemBuilder: (context, index) => Padding(
-                      padding: AppPadding.only(bottom: 12),
-                      child: AlbumItemListWidget(
-                        album: AlbumDataSource.albums[index],
+                    itemCount: widget.albums.length,
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: () => AppScreensNavigations.navigateToGalleryDetail(
+                        context,
+                        widget.albums[index],
+                      ),
+                      child: Padding(
+                        padding: AppPadding.only(bottom: 12),
+                        child: AlbumItemListWidget(album: widget.albums[index]),
                       ),
                     ),
                   ),

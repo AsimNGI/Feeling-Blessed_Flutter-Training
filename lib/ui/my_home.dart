@@ -1,17 +1,19 @@
 import 'package:animated_bubble_navigation_bar/animated_bubble_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_training/model/album_items.dart';
 import 'package:flutter_training/model/organization.dart';
 import 'package:flutter_training/ui/gallery_screen.dart';
 import 'package:flutter_training/ui/org_detail_screen.dart';
 import 'package:flutter_training/utils/app_colors.dart';
-import 'package:flutter_training/utils/app_constant.dart';
 import 'package:flutter_training/utils/app_font_sizes.dart';
 import 'package:flutter_training/utils/app_font_weights.dart';
+import 'package:flutter_training/utils/app_images_url.dart';
 import 'package:flutter_training/utils/app_padding.dart';
 import 'package:flutter_training/utils/app_strings.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final List<AlbumItems> albums;
+  const MyHomePage({super.key, required this.albums});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -19,15 +21,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Widget> get _screens => [
-    const KeepAliveWrapper(child: MyGallery()),
+    KeepAliveWrapper(child: MyGallery(albums: widget.albums)),
     KeepAliveWrapper(
       child: OrgDetailScreen(
         org: Organization(
           name: AppStrings.sampleOrgName,
           location: AppStrings.sampleOrgLocation,
           website: AppStrings.sampleOrgWebsite,
-          coverImagePath: AppConstant.coverImagePlaceholder,
-          logoPath: AppConstant.logoEdhi,
+          coverImagePath: AppImagesUrl.coverImagePlaceholder,
+          logoPath: AppImagesUrl.logoEdhi,
         ),
       ),
     ),

@@ -103,6 +103,7 @@ class AppPadding {
   static double get w99 => 99.w;
   static double get w100 => 100.w;
   static double get w120 => 120.w;
+  static double get w138 => 138.w;
 
   static double get h0 => 0.h;
   static double get h1 => 1.h;
