@@ -21,7 +21,7 @@ class OrgDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () {},
           icon: const Icon(Icons.arrow_back),
         ),
       ),
