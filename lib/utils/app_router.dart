@@ -15,29 +15,20 @@ class AppRouter {
         builder: (context, state) => const SplashScreen(),
       ),
 
-      // GoRoute(
-      //   path: '${AppPaths.home}/:id',
-      //   name: AppRoutesName.home,
-      //   builder: (context, state) {
-      //     final idFromPathParam = state.pathParameters['id'] ?? '';
-      //     final idFromQueryParam = state.uri.queryParameters['id'] ?? '';
-      //     final idFromExtra = state.extra as String? ?? '';
-      //     print('idFromPathParam: $idFromPathParam');
-      //     print('idFromQueryParam: $idFromQueryParam');
-      //     print('idFromExtra: $idFromExtra');
-      //     return MyHomePage(id: idFromExtra);
-      //   },
-      // ),
-      ShellRoute(
-        builder: (context, state, child) => MyHomePage(id: state.extra as String? ?? ''),
-        routes: [
-          GoRoute(
-            path: AppPaths.gallery,
-            name: AppRoutesName.gallery,
-            builder: (context, state) => const MyHomePage(),
-          ),
-        ],
+      GoRoute(
+        path: '${AppPaths.home}/:id',
+        name: AppRoutesName.home,
+        builder: (context, state) {
+          final idFromPathParam = state.pathParameters['id'] ?? '';
+          final idFromQueryParam = state.uri.queryParameters['id'] ?? '';
+          final idFromExtra = state.extra as String? ?? '';
+          print('idFromPathParam: $idFromPathParam');
+          print('idFromQueryParam: $idFromQueryParam');
+          print('idFromExtra: $idFromExtra');
+          return MyHomePage(id: idFromExtra);
+        },
       ),
+      
     ],
   );
 }
