@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_training/bloc/update_ui_cubit.dart';
 import 'package:flutter_training/data/data_source.dart';
 import 'package:flutter_training/theme/app_text_styles.dart';
 import 'package:flutter_training/utils/app_padding.dart';
 import 'package:flutter_training/utils/app_strings.dart';
 
+import '../bloc/meta_cubit.dart';
 import '../utils/app_navigation.dart';
 import '../widgets/album_item_grid_widget.dart';
 import '../widgets/album_item_list_widget.dart';
@@ -48,6 +51,51 @@ class _MyGalleryState extends State<MyGallery> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              BlocBuilder<UpdateUiCubit, Color>(
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () {
+                      context.read<UpdateUiCubit>().updateColor('asim');
+                    },
+                    child: Container(height: 100.h, width: 100.w, color: state),
+                  );
+                },
+              ),
+              30.verticalSpace,
+              BlocListener<MetaCubit, MetaState>(
+                listener: (context, state) {
+                  if (state is MetaLoadedState) {}
+                },
+                child: BlocBuilder<MetaCubit, MetaState>(
+                  builder: (context, state) {
+                    if (state is MetaLoadingState) {
+                      return const CircularProgressIndicator();
+                    } else if (state is MetaLoadedState) {
+                      // print('state.bannerImage: ${state.bannerImage}');
+                      return InkWell(
+                        onTap: () {
+                          context.read<MetaCubit>().fetchMeta();
+                        },
+                        child: Image.network(
+                          state.bannerImage,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Text('image not loaded'),
+                        ),
+                      );
+                    } else if (state is MetaErrorState) {
+                      return Text(state.error);
+                    }
+                    return ElevatedButton(
+                      onPressed: () {
+                        context.read<MetaCubit>().fetchMeta();
+                      },
+                      child: Text('Fetch Meta'),
+                    );
+                  },
+                ),
+              ),
+              30.verticalSpace,
+
               Padding(
                 padding: AppPadding.all16,
                 child: Row(
