@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_training/cubit/gallery_cubit.dart';
 import 'package:flutter_training/cubit/gallery_state.dart';
 import 'package:flutter_training/model/album_items.dart';
+import 'package:flutter_training/theme/app_styles.dart';
 import 'package:flutter_training/utils/app_padding.dart';
 import 'package:flutter_training/utils/app_screens_navigations.dart';
-import 'package:flutter_training/theme/app_styles.dart';
 import 'package:flutter_training/utils/app_strings.dart';
 
 import '../widgets/album_item_grid_widget.dart';

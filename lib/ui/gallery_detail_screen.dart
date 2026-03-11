@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_training/cubit/gallery_cubit.dart';
 import 'package:flutter_training/model/album_items.dart';
 import 'package:flutter_training/theme/app_styles.dart';
 import 'package:flutter_training/utils/app_colors.dart';
@@ -17,6 +19,12 @@ class GalleryDetailScreen extends StatefulWidget {
 }
 
 class _GalleryDetailScreenState extends State<GalleryDetailScreen> {
+  @override
+  initState() {
+    super.initState();
+    context.read<GalleryCubit>().getMetaData();
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = AppStyles.of(context);

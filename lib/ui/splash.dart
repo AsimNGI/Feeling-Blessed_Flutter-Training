@@ -36,7 +36,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
       color: AppColors.background,
       child: SizedBox.expand(
         child: Center(
-          child: FlutterLogo(size: AppConstant.splashLogoSize),
+          child: FlutterLogo(size: AppConstants.splashLogoSize),
         ),
       ),
     );
