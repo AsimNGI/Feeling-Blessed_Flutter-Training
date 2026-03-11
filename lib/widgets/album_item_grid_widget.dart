@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_training/model/album_items.dart';
-import 'package:flutter_training/theme/app_text_styles.dart';
+import 'package:flutter_training/theme/app_styles.dart';
 import 'package:flutter_training/utils/app_colors.dart';
 import 'package:flutter_training/utils/app_padding.dart';
 
@@ -14,6 +14,7 @@ class AlbumItemGridWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = AppStyles.of(context);
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
       borderRadius: BorderRadius.circular(10.r),
@@ -64,7 +65,7 @@ class AlbumItemGridWidget extends StatelessWidget {
               maxLines: 2,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.overlayTitle,
+              style: s.overlayTitle,
             ),
           ),
           Positioned(
@@ -74,7 +75,7 @@ class AlbumItemGridWidget extends StatelessWidget {
             child: Text(
               album.id,
               textAlign: TextAlign.center,
-              style: AppTextStyles.overlayCaption,
+              style: s.overlayCaption,
             ),
           ),
         ],

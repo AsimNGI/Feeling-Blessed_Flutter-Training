@@ -19,4 +19,7 @@ class AppColors {
   static const Color divider = Color(0xFFEAECF0);
   static const Color iconMuted = Color(0xFF98A2B3);
   static const Color shadow = Color(0x0D000000);
+
+  static const Color backgroundGradientStart = Color(0xFF006799);
+  static const Color backgroundGradientEnd = Color(0xFF138677);
 }

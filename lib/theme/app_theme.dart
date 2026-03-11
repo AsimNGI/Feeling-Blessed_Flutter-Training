@@ -14,14 +14,14 @@ class AppTheme {
         surface: AppColors.surface,
       ),
       scaffoldBackgroundColor: AppColors.surface,
-      textTheme: GoogleFonts.robotoTextTheme(
+      textTheme: GoogleFonts.interTextTheme(
         TextTheme(
           headlineLarge: AppTextStyles.headlineLarge,
           headlineMedium: AppTextStyles.headlineSmall,
           headlineSmall: AppTextStyles.headlineSmall,
           titleLarge: AppTextStyles.titleLarge,
           titleMedium: AppTextStyles.titleMedium,
-          titleSmall: AppTextStyles.titleMedium,
+          titleSmall: AppTextStyles.titleSmall,
           bodyLarge: AppTextStyles.bodyLarge,
           bodyMedium: AppTextStyles.bodyMedium,
           bodySmall: AppTextStyles.bodySmall,

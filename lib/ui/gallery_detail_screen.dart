@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_training/model/album_items.dart';
-import 'package:flutter_training/theme/app_text_styles.dart';
+import 'package:flutter_training/theme/app_styles.dart';
 import 'package:flutter_training/utils/app_colors.dart';
 import 'package:flutter_training/utils/app_images_url.dart';
 import 'package:flutter_training/utils/app_padding.dart';
@@ -19,6 +19,7 @@ class GalleryDetailScreen extends StatefulWidget {
 class _GalleryDetailScreenState extends State<GalleryDetailScreen> {
   @override
   Widget build(BuildContext context) {
+    final s = AppStyles.of(context);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -87,7 +88,7 @@ class _GalleryDetailScreenState extends State<GalleryDetailScreen> {
                     children: [
                       Text(
                         widget.albumItems.name,
-                        style: AppTextStyles.headlineSmall,
+                        style: s.headlineSmall,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -108,7 +109,7 @@ class _GalleryDetailScreenState extends State<GalleryDetailScreen> {
                           height: AppPadding.h16,
                         ),
                         text: widget.albumItems.website,
-                        textStyle: AppTextStyles.captionUnderline,
+                        textStyle: s.captionUnderline,
                       ),
                     ],
                   ),
@@ -127,7 +128,9 @@ class _GalleryDetailScreenState extends State<GalleryDetailScreen> {
               ),
             ),
             AppPadding.vertical24,
-            Text(widget.albumItems.description, style: AppTextStyles.bodyLarge),
+            Text(
+              widget.albumItems.description,
+              style: s.bodyLarge),
           ],
         ),
       ),

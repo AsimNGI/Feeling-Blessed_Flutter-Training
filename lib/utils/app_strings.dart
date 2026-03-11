@@ -9,6 +9,12 @@ class AppStrings {
       "Abdul Sattar Edhi International Foundation";
   static const String sampleOrgLocation = "City, Country";
   static const String sampleOrgWebsite = "website.com";
+  static const String sampleOrgPhone = "+004 1234 1234";
+  static const String sampleOrgEmail = "abdallah.ibad@almanar.org.uk";
+  static const String sampleOrgEtnNumber =
+      "EIN 95-4453134 / Charity registration number: 12106691";
+  static const String impactByThisCharity = "Impact by this charity";
+  static const String categories = "Categories";
   static const String organizationDetails =
       "The Edhi Foundation, established by Abdul Sattar Edhi in 1951, is the largest non-profit social welfare organization in Pakistan, known for its vast humanitarian services. Registered in the USA as a 501(c)(3) tax-exempt organization (Tax ID: 11-3013369), it relies on individual donations to support its work. It operates Pakistan’s most extensive emergency services, including a 24-hour free ambulance service, providing immediate assistance during disasters and emergencies. The foundation also offers shelter for the destitute, orphan care, and free healthcare services across Pakistan. Bilquis Bano Edhi, Abdul Sattar Edhi’s wife, played a crucial role in expanding maternal and child healthcare services. The Edhi Foundation’s Cradle Program saves newborns, while its hospitals, clinics, and rehabilitation centers offer vital medical care. Internationally, Edhi's disaster relief efforts extend to several countries, providing aid to refugees, war victims, and those affected by natural calamities. Led by Faisal and Kubra Edhi, the foundation continues to serve under the motto, Live and Help Live, with a mission rooted in non-discriminatory humanitarian aid.";
   static const String mountainView = "Mountain View";
@@ -140,4 +146,5 @@ class AppStrings {
       "Days here pass in a relaxed, holiday rhythm. "
       "A slice of tropical ease by the water.";
   static const String sampleWebsite = "https://www.google.com";
+  static const String charityDetails = "Charity details";
 }

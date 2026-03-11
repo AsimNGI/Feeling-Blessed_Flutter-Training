@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_training/theme/app_text_styles.dart';
+import 'package:flutter_training/theme/app_styles.dart';
 import 'package:flutter_training/utils/app_colors.dart';
 
 class IconPlusTextWidget extends StatelessWidget {
@@ -28,6 +28,7 @@ class IconPlusTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = AppStyles.of(context);
     Widget iconWidget;
     if (icon is IconData) {
       iconWidget = Icon(icon as IconData, size: iconSize.r, color: iconColor);
@@ -38,14 +39,21 @@ class IconPlusTextWidget extends StatelessWidget {
     }
 
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         iconWidget,
         SizedBox(width: spacing.w),
-        GestureDetector(
-          onTap: onTap,
-          behavior: HitTestBehavior.opaque,
-          child: Text(text, style: textStyle ?? AppTextStyles.bodySmall),
+        Expanded(
+          child: GestureDetector(
+            onTap: onTap,
+            behavior: HitTestBehavior.opaque,
+            child: Text(
+              text,
+              style: textStyle ?? s.bodySmall,
+              softWrap: true,
+              overflow: TextOverflow.visible,
+            ),
+          ),
         ),
       ],
     );

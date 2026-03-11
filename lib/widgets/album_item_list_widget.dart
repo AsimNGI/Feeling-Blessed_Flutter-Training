@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_training/model/album_items.dart';
-import 'package:flutter_training/theme/app_text_styles.dart';
+import 'package:flutter_training/theme/app_styles.dart';
 import 'package:flutter_training/utils/app_colors.dart';
 import 'package:flutter_training/utils/app_padding.dart';
 
@@ -11,6 +11,7 @@ class AlbumItemListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = AppStyles.of(context);
     return Container(
       height: AppPadding.h120,
       decoration: BoxDecoration(
@@ -44,12 +45,12 @@ class AlbumItemListWidget extends StatelessWidget {
                 children: [
                   Text(
                     album.name,
-                    style: AppTextStyles.titleLarge,
+                    style: s.titleLarge,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   AppPadding.vertical4,
-                  Text(album.id, style: AppTextStyles.bodyMedium),
+                  Text(album.id, style: s.bodyMedium),
                 ],
               ),
             ),
