@@ -147,4 +147,45 @@ class AppStrings {
       "A slice of tropical ease by the water.";
   static const String sampleWebsite = "https://www.google.com";
   static const String charityDetails = "Charity details";
+  static const String countryOfImpact = "Country of impact";
+  static const String fundraisingNow = "Fundraising now";
+  static const String recentActivity = "Recent activity";
+  static const String peopleDonatedSummary =
+      "2 people donated (today, this week, this month)";
+  // Trust box – titles
+  static const String verifiedByFeelingBlessedTitle = "Verified by Feeling Blessed";
+  static const String directDonationToCharityTitle = "Direct donation to charity";
+  static const String registeredWithIRSTitle = "Registered with the IRS";
+  // Trust box – subtitles
+  static const String verifiedByFeelingBlessedSubtitle =
+      "Regular audits done to ensure the charity's credibility";
+  static const String directDonationToCharitySubtitle =
+      "Funds transferred directly to the charity's Stripe account";
+  static const String registeredWithIRSSubtitle =
+      "Tax-exempt under Section 501(c)(3)";
+  static const String donate = "Donate";
+  // Impact categories
+  static const String categoryOrphans = "Orphans";
+  static const String categoryFoodRelief = "Food relief";
+  static const String categoryEducation = "Education";
+  static const String categoryHealth = "Health";
+  // Countries
+  static const String countryPakistan = "Pakistan";
+  static const String countryPalestine = "Palestine";
+  static const String countrySyria = "Syria";
+  static const String countryBangladesh = "Bangladesh";
+  // Fundraiser samples
+  static const String fundraiserLebanon = "2024 Lebanon emergency";
+  static const String fundraiserLorem = "Fundraiser name lorem ipsum dolor sit amet";
+  // Recent activity
+  static const String silentGiver = "Silent giver (anonymous)";
+  static const String kindDonor = "Kind donor (anonymous)";
+  static const String donorAlya = "Alya Abaslan";
+  static const String messageBless = "May Allah bless you all for your help people in need";
+  static const String messageHonor = "In honor of Muhammad Ibrahim Qad";
+  static const String today = "today";
+  static const String oneDayAgo = "1 day ago";
+  static const String sixDaysAgo = "6 days ago";
+  static const String oneWeekAgo = "1 week ago";
+  static const String oneMonthAgo = "1 month ago";
 }

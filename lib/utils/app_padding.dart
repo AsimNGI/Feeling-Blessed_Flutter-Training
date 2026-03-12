@@ -104,6 +104,8 @@ class AppPadding {
   static double get w100 => 100.w;
   static double get w120 => 120.w;
   static double get w138 => 138.w;
+  static double get w280 => 280.w;
+  static double get w255 => 255.w;
 
   static double get h0 => 0.h;
   static double get h1 => 1.h;
@@ -207,6 +209,8 @@ class AppPadding {
   static double get h99 => 99.h;
   static double get h100 => 100.h;
   static double get h120 => 120.h;
+  static double get h180 => 180.h;
+  static double get h296 => 296.h;
 
   static double get r0 => 0.r;
   static double get r1 => 1.r;
@@ -438,6 +442,9 @@ class AppPadding {
   static SizedBox get vertical16 => h16.verticalSpace;
   static SizedBox get vertical24 => h24.verticalSpace;
   static SizedBox get vertical32 => h32.verticalSpace;
+  static SizedBox get vertical40 => h40.verticalSpace;
+  static SizedBox get vertical50 => h50.verticalSpace;
+  static SizedBox get vertical60 => h60.verticalSpace;
 
   static SizedBox get horizontal4 => w4.horizontalSpace;
   static SizedBox get horizontal8 => w8.horizontalSpace;
