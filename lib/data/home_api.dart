@@ -1,25 +1,22 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_training/core/constants/api_constants.dart';
 
 import '../core/network/dio_client.dart';
 import '../model/home_data.dart';
 
-/// Calls home API and returns [HomeData]. Used directly by Bloc.
+
 class HomeApi {
-  HomeApi([Dio? dio]) : _dio = dio ?? createDio();
 
-  final Dio _dio;
-
-  /// GET home – parses code/data and returns [HomeData] or throws.
   Future<HomeData> getHome({String? latitude, String? longitude}) async {
-    final response = await _dio.get(
-      'home',
+    final response = await DioClient().getRequest(
+      ApiConstants.home,
       queryParameters: <String, String>{
         if (latitude != null && latitude.isNotEmpty) 'latitude': latitude,
         if (longitude != null && longitude.isNotEmpty) 'longitude': longitude,
       },
     );
 
-    final body = response.data as Map<String, dynamic>?;
+    final body = response?.data as Map<String, dynamic>?;
     if (body == null) throw Exception('Empty response');
 
     final code = body['code'] as int? ?? 0;

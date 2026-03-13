@@ -8,16 +8,15 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(this._api) : super(const HomeInitial()) {
+  HomeBloc() : super(const HomeInitial()) {
     on<HomeLoadRequested>(_onLoad);
   }
 
-  final HomeApi _api;
 
   Future<void> _onLoad(HomeLoadRequested event, Emitter<HomeState> emit) async {
     emit(const HomeLoading());
     try {
-      final data = await _api.getHome();
+      final data = await HomeApi().getHome();
       emit(HomeLoaded(data));
     } catch (e) {
       emit(HomeError(e.toString()));
