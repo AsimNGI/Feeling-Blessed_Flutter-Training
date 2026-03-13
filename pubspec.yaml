@@ -37,10 +37,13 @@ dependencies:
   flutter_svg: ^2.2.3
   flutter_screenutil: ^5.9.3
   google_fonts: ^8.0.2
-  animated_bubble_navigation_bar: ^1.1.0
   go_router: ^17.0.1
   flutter_native_splash: ^2.4.7
   flutter_bloc: ^9.1.1
+  dio: ^5.7.0
+  equatable: ^2.0.7
+  flutter_dotenv: ^6.0.0
+  lottie: ^3.3.2
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +80,10 @@ flutter:
     - asset/images/
     - asset/svgs/
     - asset/icons/
+    - asset/lottie/
+    - .env.dev
+    - .env.staging
+    - .env.production
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

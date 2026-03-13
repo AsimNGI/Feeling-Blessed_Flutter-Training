@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String home = "Home";
   static const String albums = "Albums";
   static const String organizations = "Organizations";
   static const String profile = "Profile";

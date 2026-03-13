@@ -1,15 +1,12 @@
-import 'package:animated_bubble_navigation_bar/animated_bubble_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_training/model/album_items.dart';
 import 'package:flutter_training/model/organization.dart';
 import 'package:flutter_training/ui/gallery_screen.dart';
+import 'package:flutter_training/ui/home_screen.dart';
 import 'package:flutter_training/ui/org_detail_screen.dart';
 import 'package:flutter_training/utils/app_colors.dart';
-import 'package:flutter_training/utils/app_font_sizes.dart';
-import 'package:flutter_training/utils/app_font_weights.dart';
-import 'package:flutter_training/utils/app_images_url.dart';
-import 'package:flutter_training/utils/app_padding.dart';
 import 'package:flutter_training/utils/app_strings.dart';
+import 'package:flutter_training/utils/app_images_url.dart';
 
 class MyHomePage extends StatefulWidget {
   final List<AlbumItems> albums;
@@ -20,7 +17,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
+
+  static const List<BottomNavigationBarItem> _navItems = [
+    BottomNavigationBarItem(
+      icon: Icon(Icons.home_outlined),
+      activeIcon: Icon(Icons.home),
+      label: 'Home',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.photo_album_outlined),
+      activeIcon: Icon(Icons.photo_album),
+      label: 'Gallery',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.volunteer_activism_outlined),
+      activeIcon: Icon(Icons.volunteer_activism),
+      label: 'Cause',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.person_outline),
+      activeIcon: Icon(Icons.person),
+      label: 'Profile',
+    ),
+  ];
+
   List<Widget> get _screens => [
+    KeepAliveWrapper(child: const HomeScreen()),
     KeepAliveWrapper(child: MyGallery(albums: widget.albums)),
     KeepAliveWrapper(
       child: OrgDetailScreen(
@@ -39,51 +62,22 @@ class _MyHomePageState extends State<MyHomePage> {
     KeepAliveWrapper(child: Text(AppStrings.profile)),
   ];
 
-  final List<BubbleItem> _menuItems = const [
-    BubbleItem(icon: Icons.photo_album_outlined, label: ''),
-    BubbleItem(icon: Icons.volunteer_activism_outlined, label: ''),
-    BubbleItem(icon: Icons.person_outline, label: ''),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: AnimatedBubbleNavBar(
-          screens: _screens,
-          menuItems: _menuItems,
-          initialIndex: 0,
-
-          bubbleDecoration: BubbleDecoration(
-            backgroundColor: AppColors.navBarBackground,
-            selectedBubbleBackgroundColor: AppColors.navBarSelectedBubble,
-            unSelectedBubbleBackgroundColor: AppColors.navBarBackground,
-            selectedBubbleLabelColor: AppColors.textPrimary,
-            unSelectedBubbleLabelColor: AppColors.textOnDark,
-            selectedBubbleIconColor: AppColors.textPrimary,
-            unSelectedBubbleIconColor: AppColors.textSecondary,
-            selectedBubbleLabelStyle: TextStyle(
-              fontSize: AppFontSizes.sp12,
-              fontWeight: AppFontWeights.w400,
-              fontStyle: FontStyle.normal,
-            ),
-            unSelectedBubbleLabelStyle: TextStyle(
-              fontSize: AppFontSizes.sp13,
-              fontWeight: AppFontWeights.bold,
-              fontStyle: FontStyle.normal,
-            ),
-            iconSize: AppPadding.r24,
-            curveIn: Curves.easeIn,
-            bubbleDuration: const Duration(milliseconds: 300),
-            physics: const BouncingScrollPhysics(),
-            margin: AppPadding.all5,
-            padding: AppPadding.all5,
-            innerIconLabelSpacing: 0,
-            bubbleItemSize: AppPadding.r20,
-            axis: Axis.horizontal,
-            alignment: Alignment.bottomCenter,
-            shapes: BubbleShape.circular,
-          ),
+        body: IndexedStack(
+          index: _selectedIndex,
+          children: _screens,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          onTap: (index) => setState(() => _selectedIndex = index),
+          items: _navItems,
+          backgroundColor: AppColors.navBarBackground,
+          selectedItemColor: AppColors.textPrimary,
+          unselectedItemColor: AppColors.textSecondary,
         ),
       ),
     );
