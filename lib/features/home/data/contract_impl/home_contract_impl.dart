@@ -1,7 +1,7 @@
 import 'package:flutter_training/features/home/domain/contracts/home_contract.dart'
     show HomeContract;
 
-import '../../../../core/constants/api_constants.dart';
+import '../../../../core/config/constants/api_constants.dart';
 import '../../../../core/data/network/data_state.dart';
 import '../../../../core/data/network/dio_client.dart';
 import '../../../../core/data/network/remote.dart';

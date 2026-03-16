@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/new_home_models.dart';
 import 'package:flutter_training/features/home/domain/entities/response/home_response.dart';
 import 'package:flutter_training/features/home/presentation/bloc/home/home_bloc.dart';

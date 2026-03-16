@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
-import 'package:flutter_training/core/constants/app_padding.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_padding.dart';
 import 'package:flutter_training/core/global/theme/app_styles.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/new_home_models.dart';
 import 'package:flutter_training/features/home/presentation/widgets/onboarding_card_item.dart';

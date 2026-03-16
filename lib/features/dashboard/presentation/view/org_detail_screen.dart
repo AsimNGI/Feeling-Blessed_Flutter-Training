@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
-import 'package:flutter_training/core/constants/app_font_sizes.dart';
-import 'package:flutter_training/core/constants/app_images_url.dart';
-import 'package:flutter_training/core/constants/app_padding.dart';
-import 'package:flutter_training/core/constants/app_strings.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_font_sizes.dart';
+import 'package:flutter_training/core/config/constants/app_images_url.dart';
+import 'package:flutter_training/core/config/constants/app_padding.dart';
+import 'package:flutter_training/core/config/constants/app_strings.dart';
 import 'package:flutter_training/core/global/theme/app_styles.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/org_detail_data.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/organization.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
 import 'package:flutter_training/core/global/theme/app_text_styles.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/core/constants/app_padding.dart';
+import 'package:flutter_training/core/config/constants/app_padding.dart';
 import 'package:lottie/lottie.dart';
 
 /// Placeholder header section (Android: HeaderSectionWithConfig with Lottie).

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
-import 'package:flutter_training/core/constants/app_images_url.dart';
-import 'package:flutter_training/core/constants/app_padding.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_images_url.dart';
+import 'package:flutter_training/core/config/constants/app_padding.dart';
 import 'package:flutter_training/core/global/theme/app_styles.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/album_items.dart';
 import 'package:flutter_training/features/dashboard/presentation/widgets/icon_plus_text_widget.dart';

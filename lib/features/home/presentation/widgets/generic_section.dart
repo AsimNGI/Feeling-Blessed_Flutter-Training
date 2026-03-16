@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/core/constants/app_padding.dart';
+import 'package:flutter_training/core/config/constants/app_padding.dart';
 import 'package:flutter_training/core/util/charity/fundraising_campaign_item.dart';
 import 'package:flutter_training/core/util/charity/nearby_charity_item.dart';
 import 'package:flutter_training/core/util/charity/suggested_charity_item.dart';

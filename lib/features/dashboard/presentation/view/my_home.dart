@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
-import 'package:flutter_training/core/constants/app_images_url.dart';
-import 'package:flutter_training/core/constants/app_strings.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_images_url.dart';
+import 'package:flutter_training/core/config/constants/app_strings.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/album_items.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/organization.dart';
 import 'package:flutter_training/features/dashboard/presentation/view/gallery_screen.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
-import 'package:flutter_training/core/constants/app_constant.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_constant.dart';
 import 'package:flutter_training/core/routing/app_screens_navigations.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/data_source.dart';
 

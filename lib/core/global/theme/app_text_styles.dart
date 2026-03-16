@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
-import 'package:flutter_training/core/constants/app_font_sizes.dart';
-import 'package:flutter_training/core/constants/app_font_weights.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_font_sizes.dart';
+import 'package:flutter_training/core/config/constants/app_font_weights.dart';
 
 class AppTextStyles {
   static const String _fontFamily = 'Inter';

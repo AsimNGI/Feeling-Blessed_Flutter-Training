@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_training/core/constants/api_constants.dart';
-import 'package:flutter_training/core/constants/app_constant.dart';
+import 'package:flutter_training/core/config/constants/api_constants.dart';
+import 'package:flutter_training/core/config/constants/app_constant.dart';
 
-import '../../constants/app_logger.dart';
+import '../../config/constants/app_logger.dart';
 
 class DioClient {
   static final Dio _dio = Dio();

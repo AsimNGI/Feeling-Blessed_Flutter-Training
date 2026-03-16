@@ -1,5 +1,5 @@
-import 'package:flutter_training/core/constants/app_images_url.dart';
-import 'package:flutter_training/core/constants/app_strings.dart';
+import 'package:flutter_training/core/config/constants/app_images_url.dart';
+import 'package:flutter_training/core/config/constants/app_strings.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/album_items.dart';
 
 class AlbumDataSource {

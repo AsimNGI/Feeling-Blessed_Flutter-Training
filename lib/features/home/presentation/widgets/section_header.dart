@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/core/constants/app_colors.dart';
-import 'package:flutter_training/core/constants/app_padding.dart';
+import 'package:flutter_training/core/config/constants/app_colors.dart';
+import 'package:flutter_training/core/config/constants/app_padding.dart';
 import 'package:flutter_training/core/global/theme/app_styles.dart';
 
 /// Section header with title, optional description, and optional arrow – matches Android [SectionHeader].
