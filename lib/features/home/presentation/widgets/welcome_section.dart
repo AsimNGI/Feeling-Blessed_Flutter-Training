@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_training/core/config/constants/app_colors.dart';
 import 'package:flutter_training/core/config/constants/app_padding.dart';
 import 'package:flutter_training/core/global/theme/app_styles.dart';
 import 'package:flutter_training/features/dashboard/domain/entity/response/new_home_models.dart';
+import 'package:flutter_training/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:flutter_training/features/home/presentation/widgets/onboarding_card_item.dart';
 
 /// Welcome section with greeting and horizontal onboarding cards – matches Android [WelcomeSection].
@@ -76,6 +78,14 @@ class WelcomeSection extends StatelessWidget {
               style: s.bodyLarge.copyWith(color: AppColors.gray600),
             ),
           ],
+          ElevatedButton(
+            onPressed: () {
+              context.read<HomeBloc>().add(
+                const ProductByIdLoadRequested('gid://shopify/Product/9147417788668'),
+              );
+            },
+            child: Text("Check graphql API"),
+          ),
           if (visibleCards.isNotEmpty) ...[
             AppPadding.vertical24,
             SizedBox(

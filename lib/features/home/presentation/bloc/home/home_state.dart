@@ -27,3 +27,4 @@ class HomeError extends HomeState {
   @override
   List<Object?> get props => [message];
 }
+

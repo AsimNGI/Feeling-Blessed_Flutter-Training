@@ -9,3 +9,12 @@ sealed class HomeEvent extends Equatable {
 class HomeLoadRequested extends HomeEvent {
   const HomeLoadRequested();
 }
+
+class ProductLoadRequested extends HomeEvent {
+  const ProductLoadRequested();
+}
+
+class ProductByIdLoadRequested extends HomeEvent {
+  const ProductByIdLoadRequested(this.id);
+  final String id;
+}

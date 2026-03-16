@@ -2,9 +2,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../features/home/data/contract_impl/home_contract_impl.dart';
+import '../../../features/home/data/contract_impl/product_contract_impl.dart';
 import '../../../features/home/domain/contracts/home_contract.dart';
+import '../../../features/home/domain/contracts/product_contract.dart';
 import '../../../features/home/domain/use_case/get_home_use_case.dart';
+import '../../../features/home/domain/use_case/get_product_by_id_use_case.dart';
+import '../../../features/home/domain/use_case/get_product_usecase.dart';
 import '../../data/network/dio_client.dart';
+import '../../data/network/graphql_client.dart';
+import '../../data/network/graphql_data_source.dart';
 import '../../data/network/remote.dart';
 import '../../data/network/remote_data_source.dart';
 
@@ -20,16 +26,21 @@ class AppInitializer {
 
   dataSources() {
     sl.registerLazySingleton<DioClient>(() => DioClient());
+    sl.registerLazySingleton<GraphQLService>(() => GraphQLService());
     sl.registerLazySingleton<IRemoteDataSource<DioClient>>(() => RemoteDataSource(sl()));
+    sl.registerLazySingleton<IRemoteDataSource<GraphQLService>>(() => GraphQLDataSource(sl()));
     sl.get<IRemoteDataSource<DioClient>>().source.initialize();
   }
 
   useCases() {
     sl.registerLazySingleton<GetHomeUseCase>(() => GetHomeUseCase(sl()));
+    sl.registerLazySingleton<GetProductUseCase>(() => GetProductUseCase(sl()));
+    sl.registerLazySingleton<GetProductByIdUseCase>(() => GetProductByIdUseCase(sl()));
   }
 
   contracts() {
     sl.registerLazySingleton<HomeContract>(() => HomeContractImpl(sl()));
+    sl.registerLazySingleton<ProductContract>(() => ProductContractImpl(sl()));
   }
 
   Future<void> loadAppEnv() async {
