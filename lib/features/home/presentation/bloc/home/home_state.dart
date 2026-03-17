@@ -15,10 +15,11 @@ class HomeLoading extends HomeState {
 }
 
 class HomeLoaded extends HomeState {
-  const HomeLoaded(this.data);
   final HomeResponse data;
+  int version = 0;
+  HomeLoaded(this.data, this.version);
   @override
-  List<Object?> get props => [data];
+  List<Object?> get props => [data, version];
 }
 
 class HomeError extends HomeState {
@@ -27,4 +28,3 @@ class HomeError extends HomeState {
   @override
   List<Object?> get props => [message];
 }
-

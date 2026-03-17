@@ -12,6 +12,7 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  int stateVersion = 0;
   final GetHomeUseCase getHomeUseCase = sl<GetHomeUseCase>();
   final GetProductUseCase getProductUseCase = sl<GetProductUseCase>();
   final GetProductByIdUseCase getProductByIdUseCase = sl<GetProductByIdUseCase>();
@@ -29,7 +30,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         HomeRequest(latitude: '37.774929', longitude: '-122.419416'),
       );
       print("homeResponse.data?.banner: ${homeResponse.data?.banner}");
-      emit(HomeLoaded(homeResponse.data!));
+      emit(HomeLoaded(homeResponse.data!, stateVersion++));
     } catch (e) {
       emit(HomeError(e.toString()));
     }
