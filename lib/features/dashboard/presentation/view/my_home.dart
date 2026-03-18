@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_training/core/config/constants/app_colors.dart';
 import 'package:flutter_training/core/config/constants/app_images_url.dart';
 import 'package:flutter_training/core/config/constants/app_strings.dart';
@@ -7,6 +8,10 @@ import 'package:flutter_training/features/dashboard/domain/entities/response/org
 import 'package:flutter_training/features/dashboard/presentation/view/gallery_screen.dart';
 import 'package:flutter_training/features/dashboard/presentation/view/org_detail_screen.dart';
 import 'package:flutter_training/features/home/presentation/view/home_screen_mobile_view.dart';
+import 'package:flutter_training/features/products/presentation/view/products_screen.dart';
+
+import '../../../products/presentation/bloc/products_bloc.dart';
+import '../../../products/presentation/bloc/products_event.dart';
 
 class MyHomePage extends StatefulWidget {
   final List<AlbumItems> albums;
@@ -31,6 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
       label: 'Gallery',
     ),
     BottomNavigationBarItem(
+      icon: Icon(Icons.shopping_bag_outlined),
+      activeIcon: Icon(Icons.shopping_bag),
+      label: 'Product',
+    ),
+    BottomNavigationBarItem(
       icon: Icon(Icons.volunteer_activism_outlined),
       activeIcon: Icon(Icons.volunteer_activism),
       label: 'Cause',
@@ -42,9 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
+  static const int _productTabIndex = 2;
+
   List<Widget> get _screens => [
     KeepAliveWrapper(child: const HomeScreenMobileView()),
     KeepAliveWrapper(child: MyGallery(albums: widget.albums)),
+    KeepAliveWrapper(child: const ProductsScreen()),
     KeepAliveWrapper(
       child: OrgDetailScreen(
         org: Organization(
@@ -64,19 +77,25 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: IndexedStack(index: _selectedIndex, children: _screens),
-        bottomNavigationBar: BottomNavigationBar(
+    return Scaffold(
+      backgroundColor: AppColors.navBarBackground,
+      body: SafeArea(
+        child: IndexedStack(index: _selectedIndex, children: _screens),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
-          onTap: (index) => setState(() => _selectedIndex = index),
+          onTap: (index) {
+            if (index == _productTabIndex) {
+              context.read<ProductsBloc>().add(const LoadProducts());
+            }
+            setState(() => _selectedIndex = index);
+          },
           items: _navItems,
           backgroundColor: AppColors.navBarBackground,
           selectedItemColor: AppColors.textPrimary,
           unselectedItemColor: AppColors.textSecondary,
         ),
-      ),
     );
   }
 }

@@ -3,6 +3,7 @@ class AppStrings {
   static const String albums = "Albums";
   static const String organizations = "Organizations";
   static const String profile = "Profile";
+  static const String products = "Products";
   static const String settings = "Settings";
   static const String gridStyle = "Grid Style";
   static const String listStyle = "List Style";

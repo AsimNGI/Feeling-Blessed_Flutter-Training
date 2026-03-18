@@ -5,4 +5,5 @@ class AppRoutesNames {
   static const String gallery = '/gallery';
   static const String profile = '/profile';
   static const String galleryDetail = '/gallery-detail';
+  static const String productDetail = '/product-detail';
 }

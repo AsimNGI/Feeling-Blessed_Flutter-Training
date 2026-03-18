@@ -212,7 +212,7 @@ class AppPadding {
   static double get h180 => 180.h;
   static double get h296 => 296.h;
   static double get h232 => 232.h;
-
+  static double get h360 => 360.h;
 
   static double get r0 => 0.r;
   static double get r1 => 1.r;
@@ -438,6 +438,7 @@ class AppPadding {
   );
 
   // SizedBox spacing
+  static SizedBox get vertical2 => h2.verticalSpace;
   static SizedBox get vertical4 => h4.verticalSpace;
   static SizedBox get vertical8 => h8.verticalSpace;
   static SizedBox get vertical12 => h12.verticalSpace;
@@ -448,6 +449,7 @@ class AppPadding {
   static SizedBox get vertical50 => h50.verticalSpace;
   static SizedBox get vertical60 => h60.verticalSpace;
 
+  static SizedBox get horizontal2 => w2.horizontalSpace;
   static SizedBox get horizontal4 => w4.horizontalSpace;
   static SizedBox get horizontal8 => w8.horizontalSpace;
   static SizedBox get horizontal12 => w12.horizontalSpace;
