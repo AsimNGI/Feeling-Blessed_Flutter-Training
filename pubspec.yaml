@@ -44,6 +44,9 @@ dependencies:
   equatable: ^2.0.7
   flutter_dotenv: ^6.0.0
   lottie: ^3.3.2
+  get_it: ^9.0.5
+  graphql: ^5.2.4
+  responsive_builder: ^0.7.1
 
 
 dev_dependencies:
